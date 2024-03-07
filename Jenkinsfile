@@ -1,23 +1,27 @@
 pipeline {
     agent any
+    
     stages {
         stage('Build') {
             steps {
-                sh 'g++ --version' // Check if g++ is installed and the version is displayed
+                // Compile the C++ code
                 sh 'g++ main.cpp -o output'
             }
         }
         stage('Test') {
             steps {
+                // Execute the compiled program
                 sh './output'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                // Deployment steps go here
+                echo 'Deployment completed'
             }
         }
     }
+    
     post {
         success {
             echo 'Pipeline succeeded'
