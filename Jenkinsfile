@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                build 'PES2UG21CS599-1'
                 sh 'g++ main.cpp -o output'
             }
         }
@@ -14,13 +13,16 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'deploy'
+                echo 'Deploying...'
             }
         }
     }
-post{
-    failure{
-        error 'Pipeline failed'
+    post {
+        success {
+            echo 'Pipeline succeeded'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
     }
-}
 }
