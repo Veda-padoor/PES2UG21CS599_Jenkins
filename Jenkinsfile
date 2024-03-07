@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'g++ --version' // Check if g++ is installed and the version is displayed
                 sh 'g++ main.cpp -o output'
             }
         }
