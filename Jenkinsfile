@@ -14,14 +14,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'deploy
+                echo 'deploy'
             }
         }
     }
-post{
-    failure{
-        error 'Pipeline failed'
+    post {
+        failure {
+            error 'Pipeline failed'
+        }
     }
 }
-}
-
