@@ -9,8 +9,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './output' // Execute the compiled program
-            }
+        // Execute the compiled program
+        if (isUnix()) {
+            sh './output'
+        } else {
+            bat 'output.exe'
+        }
+    }
         }
         stage('Deploy') {
             steps {
